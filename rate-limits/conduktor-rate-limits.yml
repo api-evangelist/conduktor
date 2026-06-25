@@ -1,0 +1,69 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Conduktor
+providerId: conduktor
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Apache Kafka
+- Streaming
+- Data Governance
+- Kafka Management
+- Gateway
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Conduktor Console and Gateway are self-hosted (and Conduktor-managed)
+  products, so the Console and Gateway REST APIs are not metered behind a public
+  per-account rate limit the way a SaaS API would be; throughput is bounded by
+  the deployment's own resources. Conduktor Gateway, however, can itself enforce
+  Kafka client rate limits and quotas through safeguard interceptors (for
+  example produce/consume rate limiting). Specific numeric limits are
+  deployment-defined and not reconciled in this artifact.
+notes: >-
+  No public, documented per-account API rate limit for the Console or Gateway
+  admin REST API was identified. Verify any deployment-specific throttling,
+  Kafka quotas, and Gateway safeguard interceptor limits during reconciliation.
+sources:
+- https://docs.conduktor.io/platform/reference/api-reference/
+- https://docs.conduktor.io/guide/reference/data-security
+- https://www.conduktor.io/pricing/
+responseCodes:
+  throttled: 429
+limits:
+- name: Console REST API
+  scope: deployment
+  metric: requests
+  limit: see deployment configuration
+  notes: >-
+    Bounded by the self-hosted/managed Console deployment's resources; no
+    documented public per-account limit.
+- name: Gateway Admin REST API
+  scope: deployment
+  metric: requests
+  limit: see deployment configuration
+  notes: >-
+    Bounded by the Gateway admin endpoint's resources; no documented public
+    per-account limit.
+- name: Gateway Safeguard Rate Limiting
+  scope: cluster
+  metric: kafka_operations
+  limit: configurable via interceptor
+  notes: >-
+    Gateway safeguard interceptors can rate-limit produce/consume operations and
+    enforce client quotas; limits are set per interceptor.
+policies:
+- name: Self-Hosted Capacity
+  description: >-
+    API throughput is governed by the resources allocated to the Console and
+    Gateway deployments rather than a vendor-imposed quota.
+- name: Gateway-Enforced Quotas
+  description: >-
+    Operators can configure Gateway interceptors to enforce Kafka client rate
+    limits and quotas on traffic passing through the proxy.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

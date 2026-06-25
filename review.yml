@@ -1,0 +1,81 @@
+aid: conduktor
+name: Conduktor
+review:
+  question: Does Conduktor expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. Conduktor's documented management surface
+    is synchronous REST (Console API and Gateway admin API). The streaming data
+    plane Conduktor manages is Apache Kafka itself, reached with native Kafka
+    clients over the Kafka binary protocol (or via the Gateway proxy), not an
+    HTTP/WebSocket or SSE event API that Conduktor documents for AsyncAPI
+    modeling.
+findings:
+  summary: |
+    Conduktor does not publish a documented public WebSocket API. Conduktor
+    Console exposes a REST API (paths under /public/v1, /public/iam/v2, and
+    /public/self-serve/v1) authenticated with an admin-generated Bearer API
+    key, and Conduktor Gateway exposes a REST admin API (paths under
+    /gateway/v2 on the admin port, default 8888) authenticated with HTTP Basic
+    auth. The underlying streaming transport is Apache Kafka's own binary
+    protocol, which clients reach directly or through the Conduktor Gateway
+    proxy; that is not a WebSocket API. No ws:// or wss:// management or data
+    endpoint is documented.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://{console-host}/public
+      documented: true
+      note: Console API - clusters, certificates, users, groups, RBAC, self-service.
+    - protocol: REST
+      scheme: https
+      baseURL: https://{gateway-admin-host}:8888/gateway/v2
+      documented: true
+      note: Gateway admin API - interceptors, virtual clusters, service accounts, tokens.
+    - protocol: Kafka
+      scheme: kafka
+      documented: true
+      note: Native Apache Kafka binary protocol, optionally proxied through the Gateway. Not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented for the Console or Gateway API as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://{console-host}/public/v1/clusters
+    - POST   https://{console-host}/public/v1/clusters
+    - DELETE https://{console-host}/public/v1/clusters/{cluster}
+    - GET    https://{console-host}/public/v1/certificates
+    - GET    https://{console-host}/public/iam/v2/group/{groupName}
+    - PUT    https://{console-host}/public/iam/v2/group/{groupName}
+    - GET    https://{console-host}/public/iam/v2/user
+    - PUT    https://{console-host}/public/self-serve/v1/application
+    - PUT    https://{console-host}/public/self-serve/v1/topic-policy
+    - GET    https://{gateway-admin-host}:8888/gateway/v2/interceptor
+    - PUT    https://{gateway-admin-host}:8888/gateway/v2/interceptor
+    - PUT    https://{gateway-admin-host}:8888/gateway/v2/virtual-cluster
+    - GET    https://{gateway-admin-host}:8888/gateway/v2/virtual-cluster/{name}
+    - PUT    https://{gateway-admin-host}:8888/gateway/v2/service-account
+    - POST   https://{gateway-admin-host}:8888/gateway/v2/token
+sources:
+  - url: https://docs.conduktor.io/platform/reference/api-reference/
+    type: APIReference
+    note: Console API overview; Bearer API key auth, example GET /public/iam/v2/group/{groupName}.
+  - url: https://developers.conduktor.io/
+    type: APIReference
+    note: Interactive Console and Gateway API reference with downloadable OpenAPI.
+  - url: https://docs.conduktor.io/guide/conduktor-in-production/automate/api-automation
+    type: Documentation
+    note: REST API and CLI automation for Console and Gateway resources.
+  - url: https://docs.conduktor.io/gateway/how-to/multi-cluster/
+    type: Documentation
+    note: Gateway virtual-cluster and service-account management over /gateway/v2.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or HTTP event-stream surface is documented, so no AsyncAPI
+    document was authored. The catalog models the documented synchronous REST
+    surface (Console and Gateway) only.

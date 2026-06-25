@@ -1,0 +1,183 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Conduktor
+providerId: conduktor
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: true
+tags:
+- Apache Kafka
+- Streaming
+- Data Governance
+- Kafka Management
+- Gateway
+- Plans
+description: >-
+  Conduktor is licensed per product. Conduktor Console offers a free Community
+  edition (up to 50 users and 3 clusters), a per-seat Team edition, and an
+  Enterprise edition with custom pricing. Conduktor Gateway offers a free
+  Community edition for cross-network Kafka access and an Enterprise edition
+  priced per Kafka cluster (3-cluster minimum). The REST API and CLI are
+  available across editions, including Community.
+notes: >-
+  Tier names, limits, and prices reflect the Conduktor pricing page as captured
+  on 2026-06-21; confirm current packaging, seat pricing, and bundled features
+  against the live pricing page during reconciliation.
+sources:
+- https://www.conduktor.io/pricing/
+- https://docs.conduktor.io/
+plans:
+- id: console-community
+  name: Console Community
+  type: free
+  description: >-
+    Free Conduktor Console edition for individuals and small teams, including
+    Kafka operations, data explorer, real-time metrics, API/CLI access, MCP
+    workflows, SSO/LDAP, and email support.
+  entries:
+  - label: Users
+    name: users
+    type: flat
+    metric: users
+    limit: 50
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  - label: Clusters
+    name: clusters
+    type: flat
+    metric: clusters
+    limit: 3
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  elements:
+  - name: Kafka Operations
+  - name: Advanced Data Explorer
+  - name: Real-Time Metrics
+  - name: API and CLI Access
+  - name: MCP Workflows
+  - name: SSO / LDAP
+  - name: Email Support
+- id: console-team
+  name: Console Team Edition
+  type: subscription
+  description: >-
+    Per-seat Console edition adding federated ownership with approval
+    workflows, unlimited audit logs and clusters, topic policy enforcement,
+    group-level RBAC, advanced Insights chargeback, custom alerts, DLQ
+    reprocessing, applications catalog, and unlimited data masking.
+  entries:
+  - label: Per Seat (Monthly)
+    name: seat_monthly
+    type: flat
+    metric: seat
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $125 per seat per month
+    userMultiplied: true
+  - label: Per Seat (Annual)
+    name: seat_annual
+    type: flat
+    metric: seat
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: $1,200 per seat per year
+    userMultiplied: true
+  elements:
+  - name: Federated Ownership with Approval Workflows
+  - name: Unlimited Audit Logs
+  - name: Unlimited Clusters
+  - name: Topic Policy Enforcement
+  - name: Group-Level RBAC
+  - name: Advanced Insights Chargeback
+  - name: Custom Alerts
+  - name: DLQ Reprocessing
+  - name: Applications Catalog
+  - name: Unlimited Data Masking
+  - name: Standard Support
+- id: console-enterprise
+  name: Console Enterprise
+  type: enterprise
+  description: >-
+    Enterprise Console edition with volume pricing, dedicated customer success,
+    custom contracts and SLAs, Silver support (Gold 24/7 available), and Gateway
+    license bundling. Contact sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Volume Pricing
+  - name: Dedicated Customer Success
+  - name: Custom Contracts and SLA
+  - name: Silver Support (Gold 24/7 available)
+  - name: Gateway License Bundling
+- id: gateway-community
+  name: Gateway Community
+  type: free
+  description: >-
+    Free Conduktor Gateway edition that lets clients reach Kafka across VPCs,
+    clouds, or private networks without adding peerings or changing brokers.
+  entries:
+  - label: Network Access
+    name: network_access
+    type: flat
+    metric: feature
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  elements:
+  - name: Cross-Network Kafka Access
+- id: gateway-enterprise
+  name: Gateway Enterprise
+  type: enterprise
+  description: >-
+    Enterprise Gateway edition priced per Kafka cluster with a 3-cluster
+    minimum, adding proxy routing, multi-tenancy, security, data sharing,
+    Schema Registry Proxy, SQL Topics, caching, centralized authentication, and
+    virtual clusters. Optional DR & Failover and Protect (encryption, data
+    quality, guardrails) add-ons.
+  entries:
+  - label: Per Cluster
+    name: cluster
+    type: flat
+    metric: clusters
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: per-cluster pricing, 3-cluster minimum (contact sales)
+    userMultiplied: true
+  elements:
+  - name: Proxy Routing
+  - name: Multi-Tenancy
+  - name: Virtual Clusters
+  - name: Schema Registry Proxy
+  - name: SQL Topics
+  - name: Caching
+  - name: Centralized Authentication
+  - name: DR & Failover (add-on)
+  - name: Protect - Encryption, Data Quality, Guardrails (add-on)
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,154 @@
+aid: conduktor
+url: https://raw.githubusercontent.com/api-evangelist/conduktor/refs/heads/main/apis.yml
+name: Conduktor
+kind: company
+description: Conduktor is an Apache Kafka management and data-governance platform. Conduktor
+  Console provides a REST API and CLI to manage clusters, topics, consumer groups,
+  certificates, users, groups, and granular RBAC, plus declarative Self-Service resources
+  (Application, ApplicationInstance, TopicPolicy). Conduktor Gateway is a Kafka proxy
+  with a REST API for interceptors (data security, quality, governance) and virtual
+  clusters.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Apache Kafka
+- Streaming
+- Data Governance
+- Kafka Management
+- Gateway
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: conduktor:console-clusters-topics-consumer-groups-api
+  name: Conduktor Console - Clusters, Topics & Consumer Groups API
+  tags:
+  - Clusters
+  - Topics
+  - Consumer Groups
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.conduktor.io/platform/reference/api-reference/
+  baseURL: https://{console-host}/public/console/v1
+  properties:
+  - url: https://docs.conduktor.io/platform/reference/api-reference/
+    type: Documentation
+  - url: https://developers.conduktor.io/?product=console
+    type: APIReference
+  - url: openapi/conduktor-openapi.yml
+    type: OpenAPI
+  - url: collections/conduktor.postman_collection.json
+    type: PostmanCollection
+  - url: collections/conduktor.opencollection.json
+    type: OpenCollection
+  description: Register and manage Kafka clusters and their certificates, and inspect
+    cluster resources such as topics and consumer groups through the Conduktor Console
+    REST API, authenticated with an admin-generated Bearer API key.
+- aid: conduktor:console-rbac-users-api
+  name: Conduktor Console - RBAC & Users API
+  tags:
+  - RBAC
+  - Users
+  - Groups
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.conduktor.io/platform/admin/rbac/
+  baseURL: https://{console-host}/public/iam/v2
+  properties:
+  - url: https://docs.conduktor.io/platform/admin/rbac/
+    type: Documentation
+  - url: https://developers.conduktor.io/?product=console
+    type: APIReference
+  - url: openapi/conduktor-openapi.yml
+    type: OpenAPI
+  - url: collections/conduktor.postman_collection.json
+    type: PostmanCollection
+  - url: collections/conduktor.opencollection.json
+    type: OpenCollection
+  description: Manage organization users, groups, and granular role-based access control
+    permissions that can be scoped to one cluster or all clusters, via the Conduktor
+    Console IAM endpoints.
+- aid: conduktor:console-self-service-api
+  name: Conduktor Console - Self-Service API
+  tags:
+  - Self-Service
+  - Topic Policies
+  - Infrastructure as Code
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.conduktor.io/platform/reference/resource-reference/self-service/
+  baseURL: https://{console-host}/public/self-serve/v1
+  properties:
+  - url: https://docs.conduktor.io/platform/reference/resource-reference/self-service/
+    type: Documentation
+  - url: https://developers.conduktor.io/?product=console
+    type: APIReference
+  - url: openapi/conduktor-openapi.yml
+    type: OpenAPI
+  - url: collections/conduktor.postman_collection.json
+    type: PostmanCollection
+  - url: collections/conduktor.opencollection.json
+    type: OpenCollection
+  description: Declaratively manage Self-Service resources - Application, ApplicationInstance,
+    and TopicPolicy - so platform teams can enforce naming and configuration standards
+    while application teams own their topic lifecycle as code.
+- aid: conduktor:gateway-interceptors-api
+  name: Conduktor Gateway - Interceptors API
+  tags:
+  - Gateway
+  - Interceptors
+  - Data Security
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.conduktor.io/gateway/
+  baseURL: https://{gateway-admin-host}:8888/gateway/v2
+  properties:
+  - url: https://docs.conduktor.io/gateway/
+    type: Documentation
+  - url: https://developers.conduktor.io/?product=gateway
+    type: APIReference
+  - url: openapi/conduktor-openapi.yml
+    type: OpenAPI
+  - url: collections/conduktor.postman_collection.json
+    type: PostmanCollection
+  - url: collections/conduktor.opencollection.json
+    type: OpenCollection
+  description: Create, list, and delete Gateway interceptors that apply data security,
+    data quality, governance, and observability policies to Kafka traffic, via the
+    Conduktor Gateway admin REST API using Basic authentication.
+- aid: conduktor:gateway-virtual-clusters-api
+  name: Conduktor Gateway - Virtual Clusters API
+  tags:
+  - Gateway
+  - Virtual Clusters
+  - Multi-Tenancy
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.conduktor.io/gateway/how-to/multi-cluster/
+  baseURL: https://{gateway-admin-host}:8888/gateway/v2
+  properties:
+  - url: https://docs.conduktor.io/gateway/how-to/multi-cluster/
+    type: Documentation
+  - url: https://developers.conduktor.io/?product=gateway
+    type: APIReference
+  - url: openapi/conduktor-openapi.yml
+    type: OpenAPI
+  - url: collections/conduktor.postman_collection.json
+    type: PostmanCollection
+  - url: collections/conduktor.opencollection.json
+    type: OpenCollection
+  description: Provision and manage Gateway virtual clusters for multi-tenancy, along
+    with their service accounts and authentication tokens, through the Conduktor Gateway
+    admin REST API.
+common:
+- type: GitHubOrganization
+  url: https://github.com/conduktor
+- type: LinkedIn
+  url: https://www.linkedin.com/company/conduktor
+- type: Website
+  url: https://www.conduktor.io
+- type: Documentation
+  url: https://docs.conduktor.io
+- type: Plans
+  url: plans/conduktor-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/conduktor-rate-limits.yml
+- type: FinOps
+  url: finops/conduktor-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

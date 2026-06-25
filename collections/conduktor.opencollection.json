@@ -1,0 +1,278 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Conduktor API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List registered Kafka clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{consoleUrl}}/public/v1/clusters"
+          },
+          "docs": "List registered Kafka clusters in Console."
+        },
+        {
+          "info": {
+            "name": "Create or update a Kafka cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{consoleUrl}}/public/v1/clusters",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"apiVersion\": \"v1\",\n  \"kind\": \"KafkaCluster\",\n  \"metadata\": { \"name\": \"my-cluster\" },\n  \"spec\": { \"displayName\": \"My Cluster\", \"bootstrapServers\": \"broker:9092\" }\n}"
+            }
+          },
+          "docs": "Create or update a Kafka cluster registration."
+        },
+        {
+          "info": {
+            "name": "Delete a Kafka cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{consoleUrl}}/public/v1/clusters/{cluster}"
+          },
+          "docs": "Delete a Kafka cluster registration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Certificates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List trusted certificates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{consoleUrl}}/public/v1/certificates"
+          },
+          "docs": "List trusted certificates."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List organization users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{consoleUrl}}/public/iam/v2/user"
+          },
+          "docs": "List organization users."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a group and its permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{consoleUrl}}/public/iam/v2/group/{groupName}"
+          },
+          "docs": "Get a group with its members and granular RBAC permissions."
+        },
+        {
+          "info": {
+            "name": "Create or update a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{consoleUrl}}/public/iam/v2/group/{groupName}",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"apiVersion\": \"iam/v2\",\n  \"kind\": \"Group\",\n  \"metadata\": { \"name\": \"project-a\" },\n  \"spec\": { \"displayName\": \"Project A\", \"permissions\": [] }\n}"
+            }
+          },
+          "docs": "Create or update a group and its permissions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Self-Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create or update an Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{consoleUrl}}/public/self-serve/v1/application",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"apiVersion\": \"self-serve/v1\",\n  \"kind\": \"Application\",\n  \"metadata\": { \"name\": \"clickstream\" },\n  \"spec\": { \"title\": \"Clickstream\", \"owner\": \"project-a\" }\n}"
+            }
+          },
+          "docs": "Create or update a Self-Service Application resource."
+        },
+        {
+          "info": {
+            "name": "Create or update a TopicPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{consoleUrl}}/public/self-serve/v1/topic-policy",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"apiVersion\": \"self-serve/v1\",\n  \"kind\": \"TopicPolicy\",\n  \"metadata\": { \"name\": \"generic-prod-topic-policy\" },\n  \"spec\": { \"policies\": {} }\n}"
+            }
+          },
+          "docs": "Create or update a TopicPolicy resource."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Gateway Interceptors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Gateway interceptors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{gatewayUrl}}/gateway/v2/interceptor",
+            "auth": {
+              "type": "basic",
+              "username": "{{gatewayAdminUser}}",
+              "password": "{{gatewayAdminPassword}}"
+            }
+          },
+          "docs": "List Gateway interceptors."
+        },
+        {
+          "info": {
+            "name": "Create or update a Gateway interceptor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{gatewayUrl}}/gateway/v2/interceptor",
+            "auth": {
+              "type": "basic",
+              "username": "{{gatewayAdminUser}}",
+              "password": "{{gatewayAdminPassword}}"
+            },
+            "body": {
+              "type": "json",
+              "data": "{\n  \"apiVersion\": \"gateway/v2\",\n  \"kind\": \"Interceptor\",\n  \"metadata\": { \"name\": \"produce-rate-limit\" },\n  \"spec\": { \"pluginClass\": \"io.conduktor.gateway.interceptor.safeguard.ProduceRateLimitingPolicyPlugin\", \"priority\": 100, \"config\": {} }\n}"
+            }
+          },
+          "docs": "Create or update a Gateway interceptor."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Gateway Virtual Clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create or update a virtual cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{gatewayUrl}}/gateway/v2/virtual-cluster",
+            "auth": {
+              "type": "basic",
+              "username": "{{gatewayAdminUser}}",
+              "password": "{{gatewayAdminPassword}}"
+            },
+            "body": {
+              "type": "json",
+              "data": "{\n  \"apiVersion\": \"gateway/v2\",\n  \"kind\": \"VirtualCluster\",\n  \"metadata\": { \"name\": \"team-a\" },\n  \"spec\": { \"aclEnabled\": true, \"superUsers\": [\"admin\"] }\n}"
+            }
+          },
+          "docs": "Create or update a Gateway virtual cluster."
+        },
+        {
+          "info": {
+            "name": "Get a virtual cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{gatewayUrl}}/gateway/v2/virtual-cluster/{name}",
+            "auth": {
+              "type": "basic",
+              "username": "{{gatewayAdminUser}}",
+              "password": "{{gatewayAdminPassword}}"
+            }
+          },
+          "docs": "Get a virtual cluster including its bootstrap address and client properties."
+        },
+        {
+          "info": {
+            "name": "Generate a service account token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{gatewayUrl}}/gateway/v2/token",
+            "auth": {
+              "type": "basic",
+              "username": "{{gatewayAdminUser}}",
+              "password": "{{gatewayAdminPassword}}"
+            },
+            "body": {
+              "type": "json",
+              "data": "{\n  \"username\": \"app-user\",\n  \"vCluster\": \"team-a\",\n  \"lifeTimeSeconds\": 3600\n}"
+            }
+          },
+          "docs": "Generate an authentication token for a Gateway service account."
+        }
+      ]
+    }
+  ]
+}
