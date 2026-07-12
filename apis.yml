@@ -135,6 +135,14 @@ apis:
     with their service accounts and authentication tokens, through the Conduktor Gateway
     admin REST API.
 common:
+- type: TrustCenter
+  url: security/conduktor-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/conduktor-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/conduktor-domain-security.yml
+- type: Authentication
+  url: authentication/conduktor-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/conduktor
 - type: LinkedIn
@@ -149,6 +157,8 @@ common:
   url: rate-limits/conduktor-rate-limits.yml
 - type: FinOps
   url: finops/conduktor-finops.yml
+- url: https://www.conduktor.io/blog/feed.xml
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

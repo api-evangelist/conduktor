@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://www.conduktor.io/kafka-security
+url: https://www.conduktor.io/kafka-security
+certifications:
+- SOC 2
+- ISO 27001
+- PCI DSS
+- HIPAA
+- GDPR
+evidence:
+- source: https://www.conduktor.io/kafka-security
+  keywords:
+  - soc 2
+  - iso 27001
+  - pci-dss
+  - hipaa
+  - gdpr
