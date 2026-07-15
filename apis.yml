@@ -135,6 +135,8 @@ apis:
     with their service accounts and authentication tokens, through the Conduktor Gateway
     admin REST API.
 common:
+- type: AgenticAccess
+  url: agentic-access/conduktor-agentic-access.yml
 - type: TrustCenter
   url: security/conduktor-trust-center.yml
 - type: VulnerabilityDisclosure
