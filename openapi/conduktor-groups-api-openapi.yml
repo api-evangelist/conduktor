@@ -1,0 +1,175 @@
+openapi: 3.0.1
+info:
+  title: Conduktor Certificates Groups API
+  description: Unified specification of the Conduktor REST API surface, covering the Conduktor Console API (clusters, certificates, users, groups, RBAC permissions, and declarative Self-Service resources) and the Conduktor Gateway API (interceptors, virtual clusters, service accounts, and tokens). Console endpoints authenticate with an admin-generated Bearer API key; Gateway admin endpoints authenticate with Basic auth. Host names are deployment-specific.
+  termsOfService: https://www.conduktor.io/terms-and-conditions/
+  contact:
+    name: Conduktor Support
+    url: https://www.conduktor.io/contact/
+  version: '1.0'
+servers:
+- url: https://{consoleHost}
+  description: Conduktor Console deployment host
+  variables:
+    consoleHost:
+      default: localhost:8080
+      description: Host and port of your Conduktor Console deployment
+- url: https://{gatewayAdminHost}:8888
+  description: Conduktor Gateway admin API host
+  variables:
+    gatewayAdminHost:
+      default: localhost
+      description: Host of your Conduktor Gateway admin endpoint
+tags:
+- name: Groups
+  description: Manage groups and RBAC permissions in Console
+paths:
+  /public/iam/v2/group:
+    get:
+      operationId: listGroups
+      tags:
+      - Groups
+      summary: List groups
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Groups.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Group'
+  /public/iam/v2/group/{groupName}:
+    get:
+      operationId: getGroup
+      tags:
+      - Groups
+      summary: Get a group and its permissions
+      description: Retrieves a group with its members and the granular RBAC permissions attached to it. Permissions can be scoped to a single cluster or all clusters and reference topic patterns and Kafka resource types.
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: groupName
+        in: path
+        required: true
+        schema:
+          type: string
+        example: project-a
+      responses:
+        '200':
+          description: The group and its permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+    put:
+      operationId: upsertGroup
+      tags:
+      - Groups
+      summary: Create or update a group and its permissions
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: groupName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Group'
+      responses:
+        '200':
+          description: Group created or updated.
+    delete:
+      operationId: deleteGroup
+      tags:
+      - Groups
+      summary: Delete a group
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: groupName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Group deleted.
+components:
+  schemas:
+    Permission:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          description: Kafka resource type the permission applies to.
+          example: TOPIC
+        name:
+          type: string
+          description: Topic or resource name or pattern.
+          example: project-a-*
+        patternType:
+          type: string
+          enum:
+          - LITERAL
+          - PREFIXED
+        cluster:
+          type: string
+          description: Cluster id, or omitted/'*' for all clusters.
+        permissions:
+          type: array
+          items:
+            type: string
+          example:
+          - topicViewConfig
+          - topicConsume
+          - topicProduce
+    Group:
+      type: object
+      properties:
+        apiVersion:
+          type: string
+          example: iam/v2
+        kind:
+          type: string
+          example: Group
+        metadata:
+          type: object
+          properties:
+            name:
+              type: string
+        spec:
+          type: object
+          properties:
+            displayName:
+              type: string
+            description:
+              type: string
+            externalGroups:
+              type: array
+              items:
+                type: string
+            members:
+              type: array
+              items:
+                type: string
+            permissions:
+              type: array
+              items:
+                $ref: '#/components/schemas/Permission'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Console API key generated by an admin in Settings > API Keys, passed as Authorization: Bearer $ADMIN_API_KEY.'
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Gateway admin credentials (GATEWAY_ADMIN_API_USERS), passed as HTTP Basic authentication to the Gateway admin API.

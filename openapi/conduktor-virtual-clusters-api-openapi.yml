@@ -1,0 +1,181 @@
+openapi: 3.0.1
+info:
+  title: Conduktor Certificates Virtual Clusters API
+  description: Unified specification of the Conduktor REST API surface, covering the Conduktor Console API (clusters, certificates, users, groups, RBAC permissions, and declarative Self-Service resources) and the Conduktor Gateway API (interceptors, virtual clusters, service accounts, and tokens). Console endpoints authenticate with an admin-generated Bearer API key; Gateway admin endpoints authenticate with Basic auth. Host names are deployment-specific.
+  termsOfService: https://www.conduktor.io/terms-and-conditions/
+  contact:
+    name: Conduktor Support
+    url: https://www.conduktor.io/contact/
+  version: '1.0'
+servers:
+- url: https://{consoleHost}
+  description: Conduktor Console deployment host
+  variables:
+    consoleHost:
+      default: localhost:8080
+      description: Host and port of your Conduktor Console deployment
+- url: https://{gatewayAdminHost}:8888
+  description: Conduktor Gateway admin API host
+  variables:
+    gatewayAdminHost:
+      default: localhost
+      description: Host of your Conduktor Gateway admin endpoint
+tags:
+- name: Virtual Clusters
+  description: Gateway virtual clusters, service accounts, and tokens
+paths:
+  /gateway/v2/virtual-cluster:
+    put:
+      operationId: upsertVirtualCluster
+      tags:
+      - Virtual Clusters
+      summary: Create or update a Gateway virtual cluster
+      security:
+      - basicAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualCluster'
+      responses:
+        '200':
+          description: Virtual cluster created or updated.
+  /gateway/v2/virtual-cluster/{name}:
+    get:
+      operationId: getVirtualCluster
+      tags:
+      - Virtual Clusters
+      summary: Get a virtual cluster
+      description: Returns the virtual cluster definition including its bootstrap address and recommended client properties.
+      security:
+      - basicAuth: []
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The virtual cluster.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualCluster'
+  /gateway/v2/service-account:
+    put:
+      operationId: upsertServiceAccount
+      tags:
+      - Virtual Clusters
+      summary: Create or update a Gateway service account
+      security:
+      - basicAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceAccount'
+      responses:
+        '200':
+          description: Service account created or updated.
+  /gateway/v2/token:
+    post:
+      operationId: createToken
+      tags:
+      - Virtual Clusters
+      summary: Generate an authentication token for a service account
+      security:
+      - basicAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+      responses:
+        '200':
+          description: Generated token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+components:
+  schemas:
+    TokenRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        vCluster:
+          type: string
+        lifeTimeSeconds:
+          type: integer
+    TokenResponse:
+      type: object
+      properties:
+        token:
+          type: string
+    ServiceAccount:
+      type: object
+      properties:
+        apiVersion:
+          type: string
+          example: gateway/v2
+        kind:
+          type: string
+          example: GatewayServiceAccount
+        metadata:
+          type: object
+          properties:
+            name:
+              type: string
+            vCluster:
+              type: string
+        spec:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - LOCAL
+              - EXTERNAL
+            externalNames:
+              type: array
+              items:
+                type: string
+    VirtualCluster:
+      type: object
+      properties:
+        apiVersion:
+          type: string
+          example: gateway/v2
+        kind:
+          type: string
+          example: VirtualCluster
+        metadata:
+          type: object
+          properties:
+            name:
+              type: string
+        spec:
+          type: object
+          properties:
+            aclEnabled:
+              type: boolean
+            superUsers:
+              type: array
+              items:
+                type: string
+            bootstrapServers:
+              type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Console API key generated by an admin in Settings > API Keys, passed as Authorization: Bearer $ADMIN_API_KEY.'
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Gateway admin credentials (GATEWAY_ADMIN_API_USERS), passed as HTTP Basic authentication to the Gateway admin API.
