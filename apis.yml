@@ -8,7 +8,20 @@ description: Conduktor is an Apache Kafka management and data-governance platfor
   (Application, ApplicationInstance, TopicPolicy). Conduktor Gateway is a Kafka proxy
   with a REST API for interceptors (data security, quality, governance) and virtual
   clusters.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/conduktor.png
 tags:
 - Apache Kafka
 - Streaming
@@ -19,121 +32,202 @@ created: '2026-06-21'
 modified: '2026-06-21'
 specificationVersion: '0.19'
 apis:
-- aid: conduktor:console-clusters-topics-consumer-groups-api
-  name: Conduktor Console - Clusters, Topics & Consumer Groups API
-  tags:
-  - Clusters
-  - Topics
-  - Consumer Groups
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: conduktor:conduktor-certificates-api
+  name: Conduktor Certificates API
+  description: Manage cluster certificates in Console
   humanURL: https://docs.conduktor.io/platform/reference/api-reference/
   baseURL: https://{console-host}/public/console/v1
-  properties:
-  - url: https://docs.conduktor.io/platform/reference/api-reference/
-    type: Documentation
-  - url: https://developers.conduktor.io/?product=console
-    type: APIReference
-  - url: openapi/conduktor-openapi.yml
-    type: OpenAPI
-  - url: collections/conduktor.postman_collection.json
-    type: PostmanCollection
-  - url: collections/conduktor.opencollection.json
-    type: OpenCollection
-  description: Register and manage Kafka clusters and their certificates, and inspect
-    cluster resources such as topics and consumer groups through the Conduktor Console
-    REST API, authenticated with an admin-generated Bearer API key.
-- aid: conduktor:console-rbac-users-api
-  name: Conduktor Console - RBAC & Users API
   tags:
-  - RBAC
-  - Users
-  - Groups
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.conduktor.io/platform/admin/rbac/
-  baseURL: https://{console-host}/public/iam/v2
+  - Certificates
   properties:
-  - url: https://docs.conduktor.io/platform/admin/rbac/
-    type: Documentation
-  - url: https://developers.conduktor.io/?product=console
-    type: APIReference
-  - url: openapi/conduktor-openapi.yml
-    type: OpenAPI
-  - url: collections/conduktor.postman_collection.json
-    type: PostmanCollection
-  - url: collections/conduktor.opencollection.json
-    type: OpenCollection
-  description: Manage organization users, groups, and granular role-based access control
-    permissions that can be scoped to one cluster or all clusters, via the Conduktor
-    Console IAM endpoints.
-- aid: conduktor:console-self-service-api
-  name: Conduktor Console - Self-Service API
+  - type: OpenAPI
+    url: openapi/conduktor-certificates-api-openapi.yml
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/reference/api-reference/
+  - type: APIReference
+    url: https://developers.conduktor.io/?product=console
+  - type: PostmanCollection
+    url: collections/conduktor.postman_collection.json
+  - type: OpenCollection
+    url: collections/conduktor.opencollection.json
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/admin/rbac/
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/reference/resource-reference/self-service/
+  - type: Documentation
+    url: https://docs.conduktor.io/gateway/
+  - type: APIReference
+    url: https://developers.conduktor.io/?product=gateway
+  - type: Documentation
+    url: https://docs.conduktor.io/gateway/how-to/multi-cluster/
+- aid: conduktor:conduktor-clusters-api
+  name: Conduktor Clusters API
+  description: Manage Kafka cluster registrations in Console
+  humanURL: https://docs.conduktor.io/platform/reference/api-reference/
+  baseURL: https://{console-host}/public/console/v1
+  tags:
+  - Clusters
+  properties:
+  - type: OpenAPI
+    url: openapi/conduktor-clusters-api-openapi.yml
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/reference/api-reference/
+  - type: APIReference
+    url: https://developers.conduktor.io/?product=console
+  - type: PostmanCollection
+    url: collections/conduktor.postman_collection.json
+  - type: OpenCollection
+    url: collections/conduktor.opencollection.json
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/admin/rbac/
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/reference/resource-reference/self-service/
+  - type: Documentation
+    url: https://docs.conduktor.io/gateway/
+  - type: APIReference
+    url: https://developers.conduktor.io/?product=gateway
+  - type: Documentation
+    url: https://docs.conduktor.io/gateway/how-to/multi-cluster/
+- aid: conduktor:conduktor-groups-api
+  name: Conduktor Groups API
+  description: Manage groups and RBAC permissions in Console
+  humanURL: https://docs.conduktor.io/platform/reference/api-reference/
+  baseURL: https://{console-host}/public/console/v1
+  tags:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/conduktor-groups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/reference/api-reference/
+  - type: APIReference
+    url: https://developers.conduktor.io/?product=console
+  - type: PostmanCollection
+    url: collections/conduktor.postman_collection.json
+  - type: OpenCollection
+    url: collections/conduktor.opencollection.json
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/admin/rbac/
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/reference/resource-reference/self-service/
+  - type: Documentation
+    url: https://docs.conduktor.io/gateway/
+  - type: APIReference
+    url: https://developers.conduktor.io/?product=gateway
+  - type: Documentation
+    url: https://docs.conduktor.io/gateway/how-to/multi-cluster/
+- aid: conduktor:conduktor-interceptors-api
+  name: Conduktor Interceptors API
+  description: Gateway interceptors for data security, quality, and governance
+  humanURL: https://docs.conduktor.io/platform/reference/api-reference/
+  baseURL: https://{console-host}/public/console/v1
+  tags:
+  - Interceptors
+  properties:
+  - type: OpenAPI
+    url: openapi/conduktor-interceptors-api-openapi.yml
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/reference/api-reference/
+  - type: APIReference
+    url: https://developers.conduktor.io/?product=console
+  - type: PostmanCollection
+    url: collections/conduktor.postman_collection.json
+  - type: OpenCollection
+    url: collections/conduktor.opencollection.json
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/admin/rbac/
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/reference/resource-reference/self-service/
+  - type: Documentation
+    url: https://docs.conduktor.io/gateway/
+  - type: APIReference
+    url: https://developers.conduktor.io/?product=gateway
+  - type: Documentation
+    url: https://docs.conduktor.io/gateway/how-to/multi-cluster/
+- aid: conduktor:conduktor-self-service-api
+  name: Conduktor Self-Service API
+  description: Declarative Application, ApplicationInstance, and TopicPolicy resources
+  humanURL: https://docs.conduktor.io/platform/reference/api-reference/
+  baseURL: https://{console-host}/public/console/v1
   tags:
   - Self-Service
-  - Topic Policies
-  - Infrastructure as Code
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.conduktor.io/platform/reference/resource-reference/self-service/
-  baseURL: https://{console-host}/public/self-serve/v1
   properties:
-  - url: https://docs.conduktor.io/platform/reference/resource-reference/self-service/
-    type: Documentation
-  - url: https://developers.conduktor.io/?product=console
-    type: APIReference
-  - url: openapi/conduktor-openapi.yml
-    type: OpenAPI
-  - url: collections/conduktor.postman_collection.json
-    type: PostmanCollection
-  - url: collections/conduktor.opencollection.json
-    type: OpenCollection
-  description: Declaratively manage Self-Service resources - Application, ApplicationInstance,
-    and TopicPolicy - so platform teams can enforce naming and configuration standards
-    while application teams own their topic lifecycle as code.
-- aid: conduktor:gateway-interceptors-api
-  name: Conduktor Gateway - Interceptors API
+  - type: OpenAPI
+    url: openapi/conduktor-self-service-api-openapi.yml
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/reference/api-reference/
+  - type: APIReference
+    url: https://developers.conduktor.io/?product=console
+  - type: PostmanCollection
+    url: collections/conduktor.postman_collection.json
+  - type: OpenCollection
+    url: collections/conduktor.opencollection.json
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/admin/rbac/
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/reference/resource-reference/self-service/
+  - type: Documentation
+    url: https://docs.conduktor.io/gateway/
+  - type: APIReference
+    url: https://developers.conduktor.io/?product=gateway
+  - type: Documentation
+    url: https://docs.conduktor.io/gateway/how-to/multi-cluster/
+- aid: conduktor:conduktor-users-api
+  name: Conduktor Users API
+  description: Manage organization users in Console
+  humanURL: https://docs.conduktor.io/platform/reference/api-reference/
+  baseURL: https://{console-host}/public/console/v1
   tags:
-  - Gateway
-  - Interceptors
-  - Data Security
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.conduktor.io/gateway/
-  baseURL: https://{gateway-admin-host}:8888/gateway/v2
+  - Users
   properties:
-  - url: https://docs.conduktor.io/gateway/
-    type: Documentation
-  - url: https://developers.conduktor.io/?product=gateway
-    type: APIReference
-  - url: openapi/conduktor-openapi.yml
-    type: OpenAPI
-  - url: collections/conduktor.postman_collection.json
-    type: PostmanCollection
-  - url: collections/conduktor.opencollection.json
-    type: OpenCollection
-  description: Create, list, and delete Gateway interceptors that apply data security,
-    data quality, governance, and observability policies to Kafka traffic, via the
-    Conduktor Gateway admin REST API using Basic authentication.
-- aid: conduktor:gateway-virtual-clusters-api
-  name: Conduktor Gateway - Virtual Clusters API
+  - type: OpenAPI
+    url: openapi/conduktor-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/reference/api-reference/
+  - type: APIReference
+    url: https://developers.conduktor.io/?product=console
+  - type: PostmanCollection
+    url: collections/conduktor.postman_collection.json
+  - type: OpenCollection
+    url: collections/conduktor.opencollection.json
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/admin/rbac/
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/reference/resource-reference/self-service/
+  - type: Documentation
+    url: https://docs.conduktor.io/gateway/
+  - type: APIReference
+    url: https://developers.conduktor.io/?product=gateway
+  - type: Documentation
+    url: https://docs.conduktor.io/gateway/how-to/multi-cluster/
+- aid: conduktor:conduktor-virtual-clusters-api
+  name: Conduktor Virtual Clusters API
+  description: Gateway virtual clusters, service accounts, and tokens
+  humanURL: https://docs.conduktor.io/platform/reference/api-reference/
+  baseURL: https://{console-host}/public/console/v1
   tags:
-  - Gateway
   - Virtual Clusters
-  - Multi-Tenancy
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.conduktor.io/gateway/how-to/multi-cluster/
-  baseURL: https://{gateway-admin-host}:8888/gateway/v2
   properties:
-  - url: https://docs.conduktor.io/gateway/how-to/multi-cluster/
-    type: Documentation
-  - url: https://developers.conduktor.io/?product=gateway
-    type: APIReference
-  - url: openapi/conduktor-openapi.yml
-    type: OpenAPI
-  - url: collections/conduktor.postman_collection.json
-    type: PostmanCollection
-  - url: collections/conduktor.opencollection.json
-    type: OpenCollection
-  description: Provision and manage Gateway virtual clusters for multi-tenancy, along
-    with their service accounts and authentication tokens, through the Conduktor Gateway
-    admin REST API.
+  - type: OpenAPI
+    url: openapi/conduktor-virtual-clusters-api-openapi.yml
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/reference/api-reference/
+  - type: APIReference
+    url: https://developers.conduktor.io/?product=console
+  - type: PostmanCollection
+    url: collections/conduktor.postman_collection.json
+  - type: OpenCollection
+    url: collections/conduktor.opencollection.json
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/admin/rbac/
+  - type: Documentation
+    url: https://docs.conduktor.io/platform/reference/resource-reference/self-service/
+  - type: Documentation
+    url: https://docs.conduktor.io/gateway/
+  - type: APIReference
+    url: https://developers.conduktor.io/?product=gateway
+  - type: Documentation
+    url: https://docs.conduktor.io/gateway/how-to/multi-cluster/
 common:
 - type: AgenticAccess
   url: agentic-access/conduktor-agentic-access.yml
