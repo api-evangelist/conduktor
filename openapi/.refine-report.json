@@ -1,0 +1,26 @@
+{
+  "provider": "conduktor",
+  "sources": [
+    "conduktor-certificates-api-openapi.yml",
+    "conduktor-clusters-api-openapi.yml",
+    "conduktor-groups-api-openapi.yml",
+    "conduktor-interceptors-api-openapi.yml",
+    "conduktor-self-service-api-openapi.yml",
+    "conduktor-users-api-openapi.yml",
+    "conduktor-virtual-clusters-api-openapi.yml"
+  ],
+  "outputs": [
+    "conduktor-certificates-api-openapi.yml",
+    "conduktor-clusters-api-openapi.yml",
+    "conduktor-groups-api-openapi.yml",
+    "conduktor-interceptors-api-openapi.yml",
+    "conduktor-self-service-api-openapi.yml",
+    "conduktor-users-api-openapi.yml",
+    "conduktor-virtual-clusters-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
