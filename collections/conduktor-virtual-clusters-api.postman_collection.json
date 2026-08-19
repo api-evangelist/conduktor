@@ -1,0 +1,527 @@
+{
+  "item": [
+    {
+      "id": "4cca674c-f0e0-4472-b4fe-3293aa2a61af",
+      "name": "Virtual Clusters",
+      "description": {
+        "content": "Gateway virtual clusters, service accounts, and tokens",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9a6aae35-1883-41a6-a938-944854075889",
+          "name": "Create or update a Gateway virtual cluster",
+          "request": {
+            "name": "Create or update a Gateway virtual cluster",
+            "description": {},
+            "url": {
+              "path": [
+                "gateway",
+                "v2",
+                "virtual-cluster"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Host and port of your Conduktor Console deployment",
+                  "type": "any",
+                  "value": "{{consoleHost}}",
+                  "key": "consoleHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apiVersion\": \"<string>\",\n  \"kind\": \"<string>\",\n  \"metadata\": {\n    \"name\": \"<string>\"\n  },\n  \"spec\": {\n    \"aclEnabled\": \"<boolean>\",\n    \"superUsers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"bootstrapServers\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e69c2b3c-30a5-46a9-99ce-96ffea6d189a",
+              "name": "Virtual cluster created or updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gateway",
+                    "v2",
+                    "virtual-cluster"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Host and port of your Conduktor Console deployment",
+                      "type": "any",
+                      "value": "{{consoleHost}}",
+                      "key": "consoleHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiVersion\": \"gateway/v2\",\n  \"kind\": \"VirtualCluster\",\n  \"metadata\": {\n    \"name\": \"<string>\"\n  },\n  \"spec\": {\n    \"aclEnabled\": \"<boolean>\",\n    \"superUsers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"bootstrapServers\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38903c09-7b45-42fc-b33b-d0c6fc1a1116",
+          "name": "Get a virtual cluster",
+          "request": {
+            "name": "Get a virtual cluster",
+            "description": {
+              "content": "Returns the virtual cluster definition including its bootstrap address and recommended client properties.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gateway",
+                "v2",
+                "virtual-cluster",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Host and port of your Conduktor Console deployment",
+                  "type": "any",
+                  "value": "{{consoleHost}}",
+                  "key": "consoleHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6a358225-3324-4622-beb4-fdb656f19922",
+              "name": "The virtual cluster.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gateway",
+                    "v2",
+                    "virtual-cluster",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Host and port of your Conduktor Console deployment",
+                      "type": "any",
+                      "value": "{{consoleHost}}",
+                      "key": "consoleHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiVersion\": \"gateway/v2\",\n  \"kind\": \"VirtualCluster\",\n  \"metadata\": {\n    \"name\": \"<string>\"\n  },\n  \"spec\": {\n    \"aclEnabled\": \"<boolean>\",\n    \"superUsers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"bootstrapServers\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e834097-29a2-427f-9101-b5632cc64a97",
+          "name": "Create or update a Gateway service account",
+          "request": {
+            "name": "Create or update a Gateway service account",
+            "description": {},
+            "url": {
+              "path": [
+                "gateway",
+                "v2",
+                "service-account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Host and port of your Conduktor Console deployment",
+                  "type": "any",
+                  "value": "{{consoleHost}}",
+                  "key": "consoleHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apiVersion\": \"<string>\",\n  \"kind\": \"<string>\",\n  \"metadata\": {\n    \"name\": \"<string>\",\n    \"vCluster\": \"<string>\"\n  },\n  \"spec\": {\n    \"type\": \"<string>\",\n    \"externalNames\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dbe48905-d0a3-4e4f-bb9a-c1e2bf02e13c",
+              "name": "Service account created or updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gateway",
+                    "v2",
+                    "service-account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Host and port of your Conduktor Console deployment",
+                      "type": "any",
+                      "value": "{{consoleHost}}",
+                      "key": "consoleHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiVersion\": \"gateway/v2\",\n  \"kind\": \"GatewayServiceAccount\",\n  \"metadata\": {\n    \"name\": \"<string>\",\n    \"vCluster\": \"<string>\"\n  },\n  \"spec\": {\n    \"type\": \"<string>\",\n    \"externalNames\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65af4020-fece-4373-8476-f0db7041f38d",
+          "name": "Generate an authentication token for a service account",
+          "request": {
+            "name": "Generate an authentication token for a service account",
+            "description": {},
+            "url": {
+              "path": [
+                "gateway",
+                "v2",
+                "token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Host and port of your Conduktor Console deployment",
+                  "type": "any",
+                  "value": "{{consoleHost}}",
+                  "key": "consoleHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"<string>\",\n  \"vCluster\": \"<string>\",\n  \"lifeTimeSeconds\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f01a911-3ff6-4c0a-b0c6-cb06ed50f4ec",
+              "name": "Generated token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gateway",
+                    "v2",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Host and port of your Conduktor Console deployment",
+                      "type": "any",
+                      "value": "{{consoleHost}}",
+                      "key": "consoleHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\",\n  \"vCluster\": \"<string>\",\n  \"lifeTimeSeconds\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Host and port of your Conduktor Console deployment",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "localhost:8080",
+      "key": "consoleHost"
+    },
+    {
+      "type": "string",
+      "value": "https://{{consoleHost}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c62b08d0-0ae2-4efa-9a7e-406b9946c4cf",
+    "name": "Conduktor Certificates Virtual Clusters API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Unified specification of the Conduktor REST API surface, covering the Conduktor Console API (clusters, certificates, users, groups, RBAC permissions, and declarative Self-Service resources) and the Conduktor Gateway API (interceptors, virtual clusters, service accounts, and tokens). Console endpoints authenticate with an admin-generated Bearer API key; Gateway admin endpoints authenticate with Basic auth. Host names are deployment-specific.\n\nContact Support:\n Name: Conduktor Support",
+      "type": "text/plain"
+    }
+  }
+}

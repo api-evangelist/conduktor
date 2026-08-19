@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Conduktor Certificates Interceptors API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Interceptors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Gateway interceptors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{consoleHost}/gateway/v2/interceptor",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List Gateway interceptors"
+        },
+        {
+          "info": {
+            "name": "Create or update a Gateway interceptor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{consoleHost}/gateway/v2/interceptor",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Creates or updates an interceptor that applies a plugin (for example data quality, encryption, safeguard, or chargeback) to Kafka traffic flowing through the Gateway, optionally scoped to a virtual cluster, group, or username."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

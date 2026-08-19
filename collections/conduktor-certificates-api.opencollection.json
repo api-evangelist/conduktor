@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Conduktor Certificates API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Certificates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List trusted certificates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{consoleHost}/public/v1/certificates",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List trusted certificates"
+        },
+        {
+          "info": {
+            "name": "Create or update a trusted certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{consoleHost}/public/v1/certificates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create or update a trusted certificate"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

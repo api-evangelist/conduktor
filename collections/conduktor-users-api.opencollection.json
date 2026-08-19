@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Conduktor Certificates Users API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List organization users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{consoleHost}/public/iam/v2/user",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List organization users"
+        },
+        {
+          "info": {
+            "name": "Create or update a user and their group membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{consoleHost}/public/iam/v2/user/:userEmail",
+            "params": [
+              {
+                "name": "userEmail",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create or update a user and their group membership"
+        },
+        {
+          "info": {
+            "name": "Delete a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{consoleHost}/public/iam/v2/user/:userEmail",
+            "params": [
+              {
+                "name": "userEmail",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

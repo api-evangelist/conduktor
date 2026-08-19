@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Conduktor Certificates Groups API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{consoleHost}/public/iam/v2/group",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List groups"
+        },
+        {
+          "info": {
+            "name": "Get a group and its permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{consoleHost}/public/iam/v2/group/:groupName",
+            "params": [
+              {
+                "name": "groupName",
+                "value": "project-a",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieves a group with its members and the granular RBAC permissions attached to it. Permissions can be scoped to a single cluster or all clusters and reference topic patterns and Kafka resource types."
+        },
+        {
+          "info": {
+            "name": "Create or update a group and its permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{consoleHost}/public/iam/v2/group/:groupName",
+            "params": [
+              {
+                "name": "groupName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create or update a group and its permissions"
+        },
+        {
+          "info": {
+            "name": "Delete a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{consoleHost}/public/iam/v2/group/:groupName",
+            "params": [
+              {
+                "name": "groupName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

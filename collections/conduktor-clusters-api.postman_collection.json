@@ -1,0 +1,476 @@
+{
+  "item": [
+    {
+      "id": "86b9e22a-139d-461b-af0c-5b62fdd08cc9",
+      "name": "Clusters",
+      "description": {
+        "content": "Manage Kafka cluster registrations in Console",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d2f7b358-821b-4618-b4ef-7557856f8bcc",
+          "name": "List configured Kafka clusters",
+          "request": {
+            "name": "List configured Kafka clusters",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v1",
+                "configs",
+                ":cluster",
+                "clusters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Host and port of your Conduktor Console deployment",
+                  "type": "any",
+                  "value": "{{consoleHost}}",
+                  "key": "consoleHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/yaml"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ebda30d3-2a3e-42c5-b845-ac13aff2189f",
+              "name": "A list of cluster configurations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "v1",
+                    "configs",
+                    ":cluster",
+                    "clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Host and port of your Conduktor Console deployment",
+                      "type": "any",
+                      "value": "{{consoleHost}}",
+                      "key": "consoleHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/yaml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/yaml"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d56b8050-4ef5-419f-8605-4d90a59886f8",
+          "name": "List registered Kafka clusters",
+          "request": {
+            "name": "List registered Kafka clusters",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v1",
+                "clusters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Host and port of your Conduktor Console deployment",
+                  "type": "any",
+                  "value": "{{consoleHost}}",
+                  "key": "consoleHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a54c534e-282e-4612-b68b-bc7d44a70060",
+              "name": "Registered clusters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "v1",
+                    "clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Host and port of your Conduktor Console deployment",
+                      "type": "any",
+                      "value": "{{consoleHost}}",
+                      "key": "consoleHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"apiVersion\": \"v1\",\n    \"kind\": \"KafkaCluster\",\n    \"metadata\": {\n      \"name\": \"string\"\n    },\n    \"spec\": {\n      \"displayName\": \"string\",\n      \"bootstrapServers\": \"string\",\n      \"color\": \"string\",\n      \"ignoreUntrustedCertificate\": false,\n      \"properties\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"schemaRegistry\": {}\n    }\n  },\n  {\n    \"apiVersion\": \"v1\",\n    \"kind\": \"KafkaCluster\",\n    \"metadata\": {\n      \"name\": \"string\"\n    },\n    \"spec\": {\n      \"displayName\": \"string\",\n      \"bootstrapServers\": \"string\",\n      \"color\": \"string\",\n      \"ignoreUntrustedCertificate\": true,\n      \"properties\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"schemaRegistry\": {}\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe026a9c-0268-4ac5-ada2-2aaefa74873f",
+          "name": "Create or update a Kafka cluster registration",
+          "request": {
+            "name": "Create or update a Kafka cluster registration",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v1",
+                "clusters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Host and port of your Conduktor Console deployment",
+                  "type": "any",
+                  "value": "{{consoleHost}}",
+                  "key": "consoleHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apiVersion\": \"<string>\",\n  \"kind\": \"<string>\",\n  \"metadata\": {\n    \"name\": \"<string>\"\n  },\n  \"spec\": {\n    \"displayName\": \"<string>\",\n    \"bootstrapServers\": \"<string>\",\n    \"color\": \"<string>\",\n    \"ignoreUntrustedCertificate\": \"<boolean>\",\n    \"properties\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"schemaRegistry\": \"<object>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b40bc1f1-0a2c-46c0-a848-a7315db21147",
+              "name": "Cluster created or updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "v1",
+                    "clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Host and port of your Conduktor Console deployment",
+                      "type": "any",
+                      "value": "{{consoleHost}}",
+                      "key": "consoleHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiVersion\": \"v1\",\n  \"kind\": \"KafkaCluster\",\n  \"metadata\": {\n    \"name\": \"<string>\"\n  },\n  \"spec\": {\n    \"displayName\": \"<string>\",\n    \"bootstrapServers\": \"<string>\",\n    \"color\": \"<string>\",\n    \"ignoreUntrustedCertificate\": \"<boolean>\",\n    \"properties\": {\n      \"key_0\": \"<string>\"\n    },\n    \"schemaRegistry\": \"<object>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiVersion\": \"v1\",\n  \"kind\": \"KafkaCluster\",\n  \"metadata\": {\n    \"name\": \"<string>\"\n  },\n  \"spec\": {\n    \"displayName\": \"<string>\",\n    \"bootstrapServers\": \"<string>\",\n    \"color\": \"<string>\",\n    \"ignoreUntrustedCertificate\": \"<boolean>\",\n    \"properties\": {\n      \"key_0\": \"<string>\"\n    },\n    \"schemaRegistry\": \"<object>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bcab5e7e-a826-4683-b1e8-4e484b551f70",
+          "name": "Delete a Kafka cluster registration",
+          "request": {
+            "name": "Delete a Kafka cluster registration",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v1",
+                "clusters",
+                ":cluster"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cluster",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Host and port of your Conduktor Console deployment",
+                  "type": "any",
+                  "value": "{{consoleHost}}",
+                  "key": "consoleHost"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1f5e64cd-e939-48a9-a025-5b233b9ec431",
+              "name": "Cluster deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "v1",
+                    "clusters",
+                    ":cluster"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cluster",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Host and port of your Conduktor Console deployment",
+                      "type": "any",
+                      "value": "{{consoleHost}}",
+                      "key": "consoleHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Host and port of your Conduktor Console deployment",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "localhost:8080",
+      "key": "consoleHost"
+    },
+    {
+      "type": "string",
+      "value": "https://{{consoleHost}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6b465b64-e047-4b50-abf5-0de1f6f6453b",
+    "name": "Conduktor Certificates Clusters API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Unified specification of the Conduktor REST API surface, covering the Conduktor Console API (clusters, certificates, users, groups, RBAC permissions, and declarative Self-Service resources) and the Conduktor Gateway API (interceptors, virtual clusters, service accounts, and tokens). Console endpoints authenticate with an admin-generated Bearer API key; Gateway admin endpoints authenticate with Basic auth. Host names are deployment-specific.\n\nContact Support:\n Name: Conduktor Support",
+      "type": "text/plain"
+    }
+  }
+}

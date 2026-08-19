@@ -1,0 +1,507 @@
+{
+  "item": [
+    {
+      "id": "0d723fd4-09ad-4bff-9e63-981f58b99179",
+      "name": "Groups",
+      "description": {
+        "content": "Manage groups and RBAC permissions in Console",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d22c5f71-9f67-48e4-806c-f48bc35b43fb",
+          "name": "List groups",
+          "request": {
+            "name": "List groups",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "iam",
+                "v2",
+                "group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Host and port of your Conduktor Console deployment",
+                  "type": "any",
+                  "value": "{{consoleHost}}",
+                  "key": "consoleHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "62394ad5-357e-4b9b-ab58-4bc1c79eb446",
+              "name": "Groups.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "iam",
+                    "v2",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Host and port of your Conduktor Console deployment",
+                      "type": "any",
+                      "value": "{{consoleHost}}",
+                      "key": "consoleHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"apiVersion\": \"iam/v2\",\n    \"kind\": \"Group\",\n    \"metadata\": {\n      \"name\": \"string\"\n    },\n    \"spec\": {\n      \"displayName\": \"string\",\n      \"description\": \"string\",\n      \"externalGroups\": [\n        \"string\",\n        \"string\"\n      ],\n      \"members\": [\n        \"string\",\n        \"string\"\n      ],\n      \"permissions\": [\n        {\n          \"resourceType\": \"TOPIC\",\n          \"name\": \"project-a-*\",\n          \"patternType\": \"LITERAL\",\n          \"cluster\": \"string\",\n          \"permissions\": [\n            \"topicViewConfig\",\n            \"topicConsume\",\n            \"topicProduce\"\n          ]\n        },\n        {\n          \"resourceType\": \"TOPIC\",\n          \"name\": \"project-a-*\",\n          \"patternType\": \"PREFIXED\",\n          \"cluster\": \"string\",\n          \"permissions\": [\n            \"topicViewConfig\",\n            \"topicConsume\",\n            \"topicProduce\"\n          ]\n        }\n      ]\n    }\n  },\n  {\n    \"apiVersion\": \"iam/v2\",\n    \"kind\": \"Group\",\n    \"metadata\": {\n      \"name\": \"string\"\n    },\n    \"spec\": {\n      \"displayName\": \"string\",\n      \"description\": \"string\",\n      \"externalGroups\": [\n        \"string\",\n        \"string\"\n      ],\n      \"members\": [\n        \"string\",\n        \"string\"\n      ],\n      \"permissions\": [\n        {\n          \"resourceType\": \"TOPIC\",\n          \"name\": \"project-a-*\",\n          \"patternType\": \"PREFIXED\",\n          \"cluster\": \"string\",\n          \"permissions\": [\n            \"topicViewConfig\",\n            \"topicConsume\",\n            \"topicProduce\"\n          ]\n        },\n        {\n          \"resourceType\": \"TOPIC\",\n          \"name\": \"project-a-*\",\n          \"patternType\": \"LITERAL\",\n          \"cluster\": \"string\",\n          \"permissions\": [\n            \"topicViewConfig\",\n            \"topicConsume\",\n            \"topicProduce\"\n          ]\n        }\n      ]\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbeea2de-d496-49c2-9b37-2bcf843be0c0",
+          "name": "Get a group and its permissions",
+          "request": {
+            "name": "Get a group and its permissions",
+            "description": {
+              "content": "Retrieves a group with its members and the granular RBAC permissions attached to it. Permissions can be scoped to a single cluster or all clusters and reference topic patterns and Kafka resource types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "public",
+                "iam",
+                "v2",
+                "group",
+                ":groupName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupName",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Host and port of your Conduktor Console deployment",
+                  "type": "any",
+                  "value": "{{consoleHost}}",
+                  "key": "consoleHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e8c80ee7-e315-419b-91d9-f3b2fcffc01a",
+              "name": "The group and its permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "iam",
+                    "v2",
+                    "group",
+                    ":groupName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Host and port of your Conduktor Console deployment",
+                      "type": "any",
+                      "value": "{{consoleHost}}",
+                      "key": "consoleHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiVersion\": \"iam/v2\",\n  \"kind\": \"Group\",\n  \"metadata\": {\n    \"name\": \"string\"\n  },\n  \"spec\": {\n    \"displayName\": \"string\",\n    \"description\": \"string\",\n    \"externalGroups\": [\n      \"string\",\n      \"string\"\n    ],\n    \"members\": [\n      \"string\",\n      \"string\"\n    ],\n    \"permissions\": [\n      {\n        \"resourceType\": \"TOPIC\",\n        \"name\": \"project-a-*\",\n        \"patternType\": \"PREFIXED\",\n        \"cluster\": \"string\",\n        \"permissions\": [\n          \"topicViewConfig\",\n          \"topicConsume\",\n          \"topicProduce\"\n        ]\n      },\n      {\n        \"resourceType\": \"TOPIC\",\n        \"name\": \"project-a-*\",\n        \"patternType\": \"PREFIXED\",\n        \"cluster\": \"string\",\n        \"permissions\": [\n          \"topicViewConfig\",\n          \"topicConsume\",\n          \"topicProduce\"\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3af60a5-06d9-4857-b75f-8d63fda27532",
+          "name": "Create or update a group and its permissions",
+          "request": {
+            "name": "Create or update a group and its permissions",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "iam",
+                "v2",
+                "group",
+                ":groupName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupName",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Host and port of your Conduktor Console deployment",
+                  "type": "any",
+                  "value": "{{consoleHost}}",
+                  "key": "consoleHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apiVersion\": \"<string>\",\n  \"kind\": \"<string>\",\n  \"metadata\": {\n    \"name\": \"<string>\"\n  },\n  \"spec\": {\n    \"displayName\": \"<string>\",\n    \"description\": \"<string>\",\n    \"externalGroups\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"members\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"permissions\": [\n      {\n        \"resourceType\": \"<string>\",\n        \"name\": \"<string>\",\n        \"patternType\": \"<string>\",\n        \"cluster\": \"<string>\",\n        \"permissions\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"resourceType\": \"<string>\",\n        \"name\": \"<string>\",\n        \"patternType\": \"<string>\",\n        \"cluster\": \"<string>\",\n        \"permissions\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1a7b55c7-ca44-44b1-a8b8-a230f645e39a",
+              "name": "Group created or updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "iam",
+                    "v2",
+                    "group",
+                    ":groupName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Host and port of your Conduktor Console deployment",
+                      "type": "any",
+                      "value": "{{consoleHost}}",
+                      "key": "consoleHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiVersion\": \"iam/v2\",\n  \"kind\": \"Group\",\n  \"metadata\": {\n    \"name\": \"<string>\"\n  },\n  \"spec\": {\n    \"displayName\": \"<string>\",\n    \"description\": \"<string>\",\n    \"externalGroups\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"members\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"permissions\": [\n      {\n        \"resourceType\": \"TOPIC\",\n        \"name\": \"project-a-*\",\n        \"patternType\": \"<string>\",\n        \"cluster\": \"<string>\",\n        \"permissions\": [\n          \"topicViewConfig\",\n          \"topicConsume\",\n          \"topicProduce\"\n        ]\n      },\n      {\n        \"resourceType\": \"TOPIC\",\n        \"name\": \"project-a-*\",\n        \"patternType\": \"<string>\",\n        \"cluster\": \"<string>\",\n        \"permissions\": [\n          \"topicViewConfig\",\n          \"topicConsume\",\n          \"topicProduce\"\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa5086e8-9ce0-4bab-b561-7b031a910f4b",
+          "name": "Delete a group",
+          "request": {
+            "name": "Delete a group",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "iam",
+                "v2",
+                "group",
+                ":groupName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupName",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Host and port of your Conduktor Console deployment",
+                  "type": "any",
+                  "value": "{{consoleHost}}",
+                  "key": "consoleHost"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "40a62082-59d1-4e8a-92c0-de8143d70edf",
+              "name": "Group deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "iam",
+                    "v2",
+                    "group",
+                    ":groupName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Host and port of your Conduktor Console deployment",
+                      "type": "any",
+                      "value": "{{consoleHost}}",
+                      "key": "consoleHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Host and port of your Conduktor Console deployment",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "localhost:8080",
+      "key": "consoleHost"
+    },
+    {
+      "type": "string",
+      "value": "https://{{consoleHost}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "42e16f5c-5d31-44f4-9a3a-be41b6f8c454",
+    "name": "Conduktor Certificates Groups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Unified specification of the Conduktor REST API surface, covering the Conduktor Console API (clusters, certificates, users, groups, RBAC permissions, and declarative Self-Service resources) and the Conduktor Gateway API (interceptors, virtual clusters, service accounts, and tokens). Console endpoints authenticate with an admin-generated Bearer API key; Gateway admin endpoints authenticate with Basic auth. Host names are deployment-specific.\n\nContact Support:\n Name: Conduktor Support",
+      "type": "text/plain"
+    }
+  }
+}

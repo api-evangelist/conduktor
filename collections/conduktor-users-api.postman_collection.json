@@ -1,0 +1,385 @@
+{
+  "item": [
+    {
+      "id": "9d999cc7-88f4-42a0-a83f-c0f7a1f79720",
+      "name": "Users",
+      "description": {
+        "content": "Manage organization users in Console",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8b6b9d94-ecfe-4c6d-8084-333fa86c95d5",
+          "name": "List organization users",
+          "request": {
+            "name": "List organization users",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "iam",
+                "v2",
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Host and port of your Conduktor Console deployment",
+                  "type": "any",
+                  "value": "{{consoleHost}}",
+                  "key": "consoleHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "191ef190-661e-4000-9779-f881b571b9b9",
+              "name": "Users.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "iam",
+                    "v2",
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Host and port of your Conduktor Console deployment",
+                      "type": "any",
+                      "value": "{{consoleHost}}",
+                      "key": "consoleHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"apiVersion\": \"iam/v2\",\n    \"kind\": \"User\",\n    \"metadata\": {\n      \"name\": \"AHbyBtTgKH@quiauGNTHzdTbfKvmZGdtEcCyuFdms.ytj\"\n    },\n    \"spec\": {\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"permissions\": [\n        {\n          \"resourceType\": \"TOPIC\",\n          \"name\": \"project-a-*\",\n          \"patternType\": \"LITERAL\",\n          \"cluster\": \"string\",\n          \"permissions\": [\n            \"topicViewConfig\",\n            \"topicConsume\",\n            \"topicProduce\"\n          ]\n        },\n        {\n          \"resourceType\": \"TOPIC\",\n          \"name\": \"project-a-*\",\n          \"patternType\": \"PREFIXED\",\n          \"cluster\": \"string\",\n          \"permissions\": [\n            \"topicViewConfig\",\n            \"topicConsume\",\n            \"topicProduce\"\n          ]\n        }\n      ]\n    }\n  },\n  {\n    \"apiVersion\": \"iam/v2\",\n    \"kind\": \"User\",\n    \"metadata\": {\n      \"name\": \"8PWO-4NmUAuzn7o@FYFKZObBLdHDMKOzbyZuTFrMGF.br\"\n    },\n    \"spec\": {\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"permissions\": [\n        {\n          \"resourceType\": \"TOPIC\",\n          \"name\": \"project-a-*\",\n          \"patternType\": \"LITERAL\",\n          \"cluster\": \"string\",\n          \"permissions\": [\n            \"topicViewConfig\",\n            \"topicConsume\",\n            \"topicProduce\"\n          ]\n        },\n        {\n          \"resourceType\": \"TOPIC\",\n          \"name\": \"project-a-*\",\n          \"patternType\": \"PREFIXED\",\n          \"cluster\": \"string\",\n          \"permissions\": [\n            \"topicViewConfig\",\n            \"topicConsume\",\n            \"topicProduce\"\n          ]\n        }\n      ]\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5808b5b-0bde-40e0-a8f0-b0f7c1e11942",
+          "name": "Create or update a user and their group membership",
+          "request": {
+            "name": "Create or update a user and their group membership",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "iam",
+                "v2",
+                "user",
+                ":userEmail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<email>",
+                  "key": "userEmail",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Host and port of your Conduktor Console deployment",
+                  "type": "any",
+                  "value": "{{consoleHost}}",
+                  "key": "consoleHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apiVersion\": \"<string>\",\n  \"kind\": \"<string>\",\n  \"metadata\": {\n    \"name\": \"<email>\"\n  },\n  \"spec\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"permissions\": [\n      {\n        \"resourceType\": \"<string>\",\n        \"name\": \"<string>\",\n        \"patternType\": \"<string>\",\n        \"cluster\": \"<string>\",\n        \"permissions\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"resourceType\": \"<string>\",\n        \"name\": \"<string>\",\n        \"patternType\": \"<string>\",\n        \"cluster\": \"<string>\",\n        \"permissions\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "210ff28d-0abb-462a-861c-d66ca7e9ce03",
+              "name": "User created or updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "iam",
+                    "v2",
+                    "user",
+                    ":userEmail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<email>",
+                      "key": "userEmail",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Host and port of your Conduktor Console deployment",
+                      "type": "any",
+                      "value": "{{consoleHost}}",
+                      "key": "consoleHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiVersion\": \"iam/v2\",\n  \"kind\": \"User\",\n  \"metadata\": {\n    \"name\": \"<email>\"\n  },\n  \"spec\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"permissions\": [\n      {\n        \"resourceType\": \"TOPIC\",\n        \"name\": \"project-a-*\",\n        \"patternType\": \"<string>\",\n        \"cluster\": \"<string>\",\n        \"permissions\": [\n          \"topicViewConfig\",\n          \"topicConsume\",\n          \"topicProduce\"\n        ]\n      },\n      {\n        \"resourceType\": \"TOPIC\",\n        \"name\": \"project-a-*\",\n        \"patternType\": \"<string>\",\n        \"cluster\": \"<string>\",\n        \"permissions\": [\n          \"topicViewConfig\",\n          \"topicConsume\",\n          \"topicProduce\"\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7111b78b-2e64-491f-9b18-669c1c6571d5",
+          "name": "Delete a user",
+          "request": {
+            "name": "Delete a user",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "iam",
+                "v2",
+                "user",
+                ":userEmail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<email>",
+                  "key": "userEmail",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Host and port of your Conduktor Console deployment",
+                  "type": "any",
+                  "value": "{{consoleHost}}",
+                  "key": "consoleHost"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e0ec8e81-8761-482b-81c9-6bb2cfeb0ed6",
+              "name": "User deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "iam",
+                    "v2",
+                    "user",
+                    ":userEmail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<email>",
+                      "key": "userEmail",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Host and port of your Conduktor Console deployment",
+                      "type": "any",
+                      "value": "{{consoleHost}}",
+                      "key": "consoleHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Host and port of your Conduktor Console deployment",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "localhost:8080",
+      "key": "consoleHost"
+    },
+    {
+      "type": "string",
+      "value": "https://{{consoleHost}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "55cd057f-799d-45bb-87a2-4edf05ecd31f",
+    "name": "Conduktor Certificates Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Unified specification of the Conduktor REST API surface, covering the Conduktor Console API (clusters, certificates, users, groups, RBAC permissions, and declarative Self-Service resources) and the Conduktor Gateway API (interceptors, virtual clusters, service accounts, and tokens). Console endpoints authenticate with an admin-generated Bearer API key; Gateway admin endpoints authenticate with Basic auth. Host names are deployment-specific.\n\nContact Support:\n Name: Conduktor Support",
+      "type": "text/plain"
+    }
+  }
+}

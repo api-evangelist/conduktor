@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Conduktor Certificates Self-Service API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Self-Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Self-Service applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{consoleHost}/public/self-serve/v1/application",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Self-Service applications"
+        },
+        {
+          "info": {
+            "name": "Create or update a Self-Service Application resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{consoleHost}/public/self-serve/v1/application",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create or update a Self-Service Application resource"
+        },
+        {
+          "info": {
+            "name": "Create or update a TopicPolicy resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{consoleHost}/public/self-serve/v1/topic-policy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Defines constraints on topic metadata labels and configuration values (for example retention.ms or replicationFactor) using OneOf, Range, or Match constraints. A TopicPolicy applies once it is referenced from an ApplicationInstance via spec.topicPolicyRef."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
