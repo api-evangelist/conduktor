@@ -40,6 +40,12 @@ tags:
 - Streaming
 - Data Governance
 - Kafka Management
+- Gateways
+tags_raw:
+- Apache Kafka
+- Streaming
+- Data Governance
+- Kafka Management
 - Gateway
 created: '2026-06-21'
 modified: '2026-06-21'
