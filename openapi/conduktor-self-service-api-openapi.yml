@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Conduktor Certificates Self-Service API
+  title: Conduktor Self Service API
   description: Unified specification of the Conduktor REST API surface, covering the Conduktor Console API (clusters, certificates, users, groups, RBAC permissions, and declarative Self-Service resources) and the Conduktor Gateway API (interceptors, virtual clusters, service accounts, and tokens). Console endpoints authenticate with an admin-generated Bearer API key; Gateway admin endpoints authenticate with Basic auth. Host names are deployment-specific.
   termsOfService: https://www.conduktor.io/terms-and-conditions/
   contact:
@@ -21,14 +21,14 @@ servers:
       default: localhost
       description: Host of your Conduktor Gateway admin endpoint
 tags:
-- name: Self-Service
+- name: Self Service
   description: Declarative Application, ApplicationInstance, and TopicPolicy resources
 paths:
   /public/self-serve/v1/application:
     get:
       operationId: listApplications
       tags:
-      - Self-Service
+      - Self Service
       summary: List Self-Service applications
       security:
       - bearerAuth: []
@@ -44,7 +44,7 @@ paths:
     put:
       operationId: upsertApplication
       tags:
-      - Self-Service
+      - Self Service
       summary: Create or update a Self-Service Application resource
       security:
       - bearerAuth: []
@@ -61,7 +61,7 @@ paths:
     put:
       operationId: upsertTopicPolicy
       tags:
-      - Self-Service
+      - Self Service
       summary: Create or update a TopicPolicy resource
       description: Defines constraints on topic metadata labels and configuration values (for example retention.ms or replicationFactor) using OneOf, Range, or Match constraints. A TopicPolicy applies once it is referenced from an ApplicationInstance via spec.topicPolicyRef.
       security:

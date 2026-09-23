@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Conduktor Certificates Groups API
+  title: Conduktor Groups API
   description: Unified specification of the Conduktor REST API surface, covering the Conduktor Console API (clusters, certificates, users, groups, RBAC permissions, and declarative Self-Service resources) and the Conduktor Gateway API (interceptors, virtual clusters, service accounts, and tokens). Console endpoints authenticate with an admin-generated Bearer API key; Gateway admin endpoints authenticate with Basic auth. Host names are deployment-specific.
   termsOfService: https://www.conduktor.io/terms-and-conditions/
   contact:
@@ -104,33 +104,6 @@ paths:
           description: Group deleted.
 components:
   schemas:
-    Permission:
-      type: object
-      properties:
-        resourceType:
-          type: string
-          description: Kafka resource type the permission applies to.
-          example: TOPIC
-        name:
-          type: string
-          description: Topic or resource name or pattern.
-          example: project-a-*
-        patternType:
-          type: string
-          enum:
-          - LITERAL
-          - PREFIXED
-        cluster:
-          type: string
-          description: Cluster id, or omitted/'*' for all clusters.
-        permissions:
-          type: array
-          items:
-            type: string
-          example:
-          - topicViewConfig
-          - topicConsume
-          - topicProduce
     Group:
       type: object
       properties:
@@ -164,6 +137,33 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Permission'
+    Permission:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          description: Kafka resource type the permission applies to.
+          example: TOPIC
+        name:
+          type: string
+          description: Topic or resource name or pattern.
+          example: project-a-*
+        patternType:
+          type: string
+          enum:
+          - LITERAL
+          - PREFIXED
+        cluster:
+          type: string
+          description: Cluster id, or omitted/'*' for all clusters.
+        permissions:
+          type: array
+          items:
+            type: string
+          example:
+          - topicViewConfig
+          - topicConsume
+          - topicProduce
   securitySchemes:
     bearerAuth:
       type: http

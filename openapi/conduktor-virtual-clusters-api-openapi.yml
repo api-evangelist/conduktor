@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Conduktor Certificates Virtual Clusters API
+  title: Conduktor Virtual Clusters API
   description: Unified specification of the Conduktor REST API surface, covering the Conduktor Console API (clusters, certificates, users, groups, RBAC permissions, and declarative Self-Service resources) and the Conduktor Gateway API (interceptors, virtual clusters, service accounts, and tokens). Console endpoints authenticate with an admin-generated Bearer API key; Gateway admin endpoints authenticate with Basic auth. Host names are deployment-specific.
   termsOfService: https://www.conduktor.io/terms-and-conditions/
   contact:
@@ -103,20 +103,31 @@ paths:
                 $ref: '#/components/schemas/TokenResponse'
 components:
   schemas:
-    TokenRequest:
+    VirtualCluster:
       type: object
       properties:
-        username:
+        apiVersion:
           type: string
-        vCluster:
+          example: gateway/v2
+        kind:
           type: string
-        lifeTimeSeconds:
-          type: integer
-    TokenResponse:
-      type: object
-      properties:
-        token:
-          type: string
+          example: VirtualCluster
+        metadata:
+          type: object
+          properties:
+            name:
+              type: string
+        spec:
+          type: object
+          properties:
+            aclEnabled:
+              type: boolean
+            superUsers:
+              type: array
+              items:
+                type: string
+            bootstrapServers:
+              type: string
     ServiceAccount:
       type: object
       properties:
@@ -145,31 +156,20 @@ components:
               type: array
               items:
                 type: string
-    VirtualCluster:
+    TokenResponse:
       type: object
       properties:
-        apiVersion:
+        token:
           type: string
-          example: gateway/v2
-        kind:
+    TokenRequest:
+      type: object
+      properties:
+        username:
           type: string
-          example: VirtualCluster
-        metadata:
-          type: object
-          properties:
-            name:
-              type: string
-        spec:
-          type: object
-          properties:
-            aclEnabled:
-              type: boolean
-            superUsers:
-              type: array
-              items:
-                type: string
-            bootstrapServers:
-              type: string
+        vCluster:
+          type: string
+        lifeTimeSeconds:
+          type: integer
   securitySchemes:
     bearerAuth:
       type: http
