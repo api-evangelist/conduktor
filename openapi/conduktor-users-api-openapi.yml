@@ -84,6 +84,32 @@ paths:
           description: User deleted.
 components:
   schemas:
+    User:
+      type: object
+      properties:
+        apiVersion:
+          type: string
+          example: iam/v2
+        kind:
+          type: string
+          example: User
+        metadata:
+          type: object
+          properties:
+            name:
+              type: string
+              format: email
+        spec:
+          type: object
+          properties:
+            firstName:
+              type: string
+            lastName:
+              type: string
+            permissions:
+              type: array
+              items:
+                $ref: '#/components/schemas/Permission'
     Permission:
       type: object
       properties:
@@ -111,32 +137,6 @@ components:
           - topicViewConfig
           - topicConsume
           - topicProduce
-    User:
-      type: object
-      properties:
-        apiVersion:
-          type: string
-          example: iam/v2
-        kind:
-          type: string
-          example: User
-        metadata:
-          type: object
-          properties:
-            name:
-              type: string
-              format: email
-        spec:
-          type: object
-          properties:
-            firstName:
-              type: string
-            lastName:
-              type: string
-            permissions:
-              type: array
-              items:
-                $ref: '#/components/schemas/Permission'
   securitySchemes:
     bearerAuth:
       type: http

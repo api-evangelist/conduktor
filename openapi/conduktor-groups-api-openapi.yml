@@ -104,6 +104,33 @@ paths:
           description: Group deleted.
 components:
   schemas:
+    Permission:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          description: Kafka resource type the permission applies to.
+          example: TOPIC
+        name:
+          type: string
+          description: Topic or resource name or pattern.
+          example: project-a-*
+        patternType:
+          type: string
+          enum:
+          - LITERAL
+          - PREFIXED
+        cluster:
+          type: string
+          description: Cluster id, or omitted/'*' for all clusters.
+        permissions:
+          type: array
+          items:
+            type: string
+          example:
+          - topicViewConfig
+          - topicConsume
+          - topicProduce
     Group:
       type: object
       properties:
@@ -137,33 +164,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Permission'
-    Permission:
-      type: object
-      properties:
-        resourceType:
-          type: string
-          description: Kafka resource type the permission applies to.
-          example: TOPIC
-        name:
-          type: string
-          description: Topic or resource name or pattern.
-          example: project-a-*
-        patternType:
-          type: string
-          enum:
-          - LITERAL
-          - PREFIXED
-        cluster:
-          type: string
-          description: Cluster id, or omitted/'*' for all clusters.
-        permissions:
-          type: array
-          items:
-            type: string
-          example:
-          - topicViewConfig
-          - topicConsume
-          - topicProduce
   securitySchemes:
     bearerAuth:
       type: http
