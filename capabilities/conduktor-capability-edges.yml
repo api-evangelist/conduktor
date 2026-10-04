@@ -1,0 +1,46 @@
+slug: conduktor
+provider: Conduktor
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Groups
+  spec_file: conduktor-groups-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: GET /public/iam/v2/group/{groupName} getGroup Get a group and its permissions; schemas Group,
+    Permission
+  reason: IAM-namespaced endpoints managing groups and their RBAC permissions are plainly identity and
+    access management; the vendor description confirms 'users, groups, and granular RBAC'.
+- tag: Users
+  spec_file: conduktor-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: 'GET /public/iam/v2/user listUsers ''List organization users''; PUT ''/public/iam/v2/user/{userEmail}''
+    ''Create or update a user and their group membership''; schemas: User, Permission'
+  reason: Operations under an /iam/ path manage organisation user accounts, group membership and RBAC
+    permissions — identity and access administration, not a business-domain object.
+- tag: Clusters
+  spec_file: conduktor-clusters-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: POST /public/v1/clusters upsertCluster Create or update a Kafka cluster registration; schema
+    KafkaCluster
+  reason: Registration and lifecycle of Kafka cluster infrastructure endpoints managed by the platform
+    maps to IT Infrastructure Management; it is middleware/infrastructure inventory rather than any business-domain
+    capability.
