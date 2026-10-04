@@ -77,27 +77,6 @@ paths:
           description: Topic policy created or updated.
 components:
   schemas:
-    TopicPolicy:
-      type: object
-      properties:
-        apiVersion:
-          type: string
-          example: self-serve/v1
-        kind:
-          type: string
-          example: TopicPolicy
-        metadata:
-          type: object
-          properties:
-            name:
-              type: string
-        spec:
-          type: object
-          properties:
-            policies:
-              type: object
-              description: Map of metadata labels and topic configuration keys to constraints (OneOf, Range, Match, etc.).
-              additionalProperties: true
     Application:
       type: object
       properties:
@@ -121,6 +100,27 @@ components:
               type: string
             owner:
               type: string
+    TopicPolicy:
+      type: object
+      properties:
+        apiVersion:
+          type: string
+          example: self-serve/v1
+        kind:
+          type: string
+          example: TopicPolicy
+        metadata:
+          type: object
+          properties:
+            name:
+              type: string
+        spec:
+          type: object
+          properties:
+            policies:
+              type: object
+              description: Map of metadata labels and topic configuration keys to constraints (OneOf, Range, Match, etc.).
+              additionalProperties: true
   securitySchemes:
     bearerAuth:
       type: http

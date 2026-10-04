@@ -103,6 +103,36 @@ paths:
                 $ref: '#/components/schemas/TokenResponse'
 components:
   schemas:
+    TokenResponse:
+      type: object
+      properties:
+        token:
+          type: string
+    VirtualCluster:
+      type: object
+      properties:
+        apiVersion:
+          type: string
+          example: gateway/v2
+        kind:
+          type: string
+          example: VirtualCluster
+        metadata:
+          type: object
+          properties:
+            name:
+              type: string
+        spec:
+          type: object
+          properties:
+            aclEnabled:
+              type: boolean
+            superUsers:
+              type: array
+              items:
+                type: string
+            bootstrapServers:
+              type: string
     ServiceAccount:
       type: object
       properties:
@@ -131,36 +161,6 @@ components:
               type: array
               items:
                 type: string
-    VirtualCluster:
-      type: object
-      properties:
-        apiVersion:
-          type: string
-          example: gateway/v2
-        kind:
-          type: string
-          example: VirtualCluster
-        metadata:
-          type: object
-          properties:
-            name:
-              type: string
-        spec:
-          type: object
-          properties:
-            aclEnabled:
-              type: boolean
-            superUsers:
-              type: array
-              items:
-                type: string
-            bootstrapServers:
-              type: string
-    TokenResponse:
-      type: object
-      properties:
-        token:
-          type: string
     TokenRequest:
       type: object
       properties:
