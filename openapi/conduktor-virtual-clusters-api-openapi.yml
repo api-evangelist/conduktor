@@ -103,11 +103,6 @@ paths:
                 $ref: '#/components/schemas/TokenResponse'
 components:
   schemas:
-    TokenResponse:
-      type: object
-      properties:
-        token:
-          type: string
     VirtualCluster:
       type: object
       properties:
@@ -133,6 +128,15 @@ components:
                 type: string
             bootstrapServers:
               type: string
+    TokenRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        vCluster:
+          type: string
+        lifeTimeSeconds:
+          type: integer
     ServiceAccount:
       type: object
       properties:
@@ -161,15 +165,11 @@ components:
               type: array
               items:
                 type: string
-    TokenRequest:
+    TokenResponse:
       type: object
       properties:
-        username:
+        token:
           type: string
-        vCluster:
-          type: string
-        lifeTimeSeconds:
-          type: integer
   securitySchemes:
     bearerAuth:
       type: http
