@@ -1,4 +1,4 @@
-# Conduktor (conduktor)
+# Conduktor
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,139 +66,136 @@
 
 Conduktor is an Apache Kafka management and data-governance platform. Conduktor Console provides a REST API and CLI to manage clusters, topics, consumer groups, certificates, users, groups, and granular RBAC, plus declarative Self-Service resources (Application, ApplicationInstance, TopicPolicy). Conduktor Gateway is a Kafka proxy with a REST API for interceptors (data security, quality, governance) and virtual clusters.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/conduktor/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/conduktor/refs/heads/main/apis.yml)
+**Areas:** Apache Kafka · Streaming · Data Governance · Kafka Management · Gateways
 
-## Tags
+## Conduktor on APIs.io
 
-- Apache Kafka
-- Streaming
-- Data Governance
-- Kafka Management
-- Gateway
+Everything profiled for Conduktor is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/conduktor/](https://apis.io/providers/conduktor/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Conduktor Certificates API](https://apis.io/apis/conduktor/conduktor-certificates-api/) — Manage cluster certificates in Console
+- [Conduktor Clusters API](https://apis.io/apis/conduktor/conduktor-clusters-api/) — Manage Kafka cluster registrations in Console
+- [Conduktor Groups API](https://apis.io/apis/conduktor/conduktor-groups-api/) — Manage groups and RBAC permissions in Console
+- [Conduktor Interceptors API](https://apis.io/apis/conduktor/conduktor-interceptors-api/) — Gateway interceptors for data security, quality, and governance
+- [Conduktor Self-Service API](https://apis.io/apis/conduktor/conduktor-self-service-api/) — Declarative Application, ApplicationInstance, and TopicPolicy resources
+- [Conduktor Users API](https://apis.io/apis/conduktor/conduktor-users-api/) — Manage organization users in Console
+- [Conduktor Virtual Clusters API](https://apis.io/apis/conduktor/conduktor-virtual-clusters-api/) — Gateway virtual clusters, service accounts, and tokens
 
-## APIs
+### Published properties
 
-### Conduktor Console - Clusters, Topics & Consumer Groups API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Register and manage Kafka clusters and their certificates, and inspect cluster resources such as topics and consumer groups through the Conduktor Console REST API, authenticated with an admin-generated Bearer API key.
+#### MCP servers (1)
 
-- **Human URL:** [https://docs.conduktor.io/platform/reference/api-reference/](https://docs.conduktor.io/platform/reference/api-reference/)
-- **Base URL:** `https://{console-host}/public/console/v1`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [conduktor](https://apis.io/servers/conduktor/conduktor/)
 
-- Clusters
-- Topics
-- Consumer Groups
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://docs.conduktor.io/platform/reference/api-reference/)
-- [API Reference](https://developers.conduktor.io/?product=console)
-- [OpenAPI](openapi/conduktor-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/conduktor.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/conduktor.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Conduktor Agentic Access](https://apis.io/agentic-access/conduktor/conduktor-agentic-access/)
 
-### Conduktor Console - RBAC & Users API
+#### Collections (8)
 
-Manage organization users, groups, and granular role-based access control permissions that can be scoped to one cluster or all clusters, via the Conduktor Console IAM endpoints.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://docs.conduktor.io/platform/admin/rbac/](https://docs.conduktor.io/platform/admin/rbac/)
-- **Base URL:** `https://{console-host}/public/iam/v2`
+- [Conduktor API](https://apis.io/collections/conduktor/open-conduktor/)
+- [Conduktor Certificates API](https://apis.io/collections/conduktor/open-conduktor-certificates-api/)
+- [Conduktor Certificates Clusters API](https://apis.io/collections/conduktor/open-conduktor-clusters-api/)
+- [Conduktor Certificates Groups API](https://apis.io/collections/conduktor/open-conduktor-groups-api/)
+- [Conduktor Certificates Interceptors API](https://apis.io/collections/conduktor/open-conduktor-interceptors-api/)
+- [Conduktor Certificates Self-Service API](https://apis.io/collections/conduktor/open-conduktor-self-service-api/)
+- [Conduktor Certificates Users API](https://apis.io/collections/conduktor/open-conduktor-users-api/)
+- [Conduktor Certificates Virtual Clusters API](https://apis.io/collections/conduktor/open-conduktor-virtual-clusters-api/)
 
-#### Tags
+#### Security (4)
 
-- RBAC
-- Users
-- Groups
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Conduktor Authentication](https://apis.io/security/conduktor/conduktor-authentication/)
+- [Conduktor Domain Security](https://apis.io/security/conduktor/conduktor-domain-security/)
+- [Conduktor Trust Center](https://apis.io/security/conduktor/conduktor-trust-center/)
+- [Conduktor Vulnerability Disclosure](https://apis.io/security/conduktor/conduktor-vulnerability-disclosure/)
 
-- [Documentation](https://docs.conduktor.io/platform/admin/rbac/)
-- [API Reference](https://developers.conduktor.io/?product=console)
-- [OpenAPI](openapi/conduktor-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/conduktor.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/conduktor.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Plans and pricing (1)
 
-### Conduktor Console - Self-Service API
+Published plans, tiers and prices.
 
-Declaratively manage Self-Service resources - Application, ApplicationInstance, and TopicPolicy - so platform teams can enforce naming and configuration standards while application teams own their topic lifecycle as code.
+- [Conduktor Plans Pricing](https://apis.io/plans/conduktor/conduktor-plans-pricing/)
 
-- **Human URL:** [https://docs.conduktor.io/platform/reference/resource-reference/self-service/](https://docs.conduktor.io/platform/reference/resource-reference/self-service/)
-- **Base URL:** `https://{console-host}/public/self-serve/v1`
+#### Rate limits (1)
 
-#### Tags
+Published request limits.
 
-- Self-Service
-- Topic Policies
-- Infrastructure as Code
+- [Conduktor Rate Limits](https://apis.io/rate-limits/conduktor/conduktor-rate-limits/)
 
-#### Properties
+#### FinOps (1)
 
-- [Documentation](https://docs.conduktor.io/platform/reference/resource-reference/self-service/)
-- [API Reference](https://developers.conduktor.io/?product=console)
-- [OpenAPI](openapi/conduktor-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/conduktor.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/conduktor.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+What the API costs to run, by operation.
 
-### Conduktor Gateway - Interceptors API
+- [Conduktor Finops](https://apis.io/finops/conduktor/conduktor-finops/)
 
-Create, list, and delete Gateway interceptors that apply data security, data quality, governance, and observability policies to Kafka traffic, via the Conduktor Gateway admin REST API using Basic authentication.
+## Where to find this API
 
-- **Human URL:** [https://docs.conduktor.io/gateway/](https://docs.conduktor.io/gateway/)
-- **Base URL:** `https://{gateway-admin-host}:8888/gateway/v2`
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Tags
-
-- Gateway
-- Interceptors
-- Data Security
-
-#### Properties
-
-- [Documentation](https://docs.conduktor.io/gateway/)
-- [API Reference](https://developers.conduktor.io/?product=gateway)
-- [OpenAPI](openapi/conduktor-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/conduktor.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/conduktor.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Conduktor Gateway - Virtual Clusters API
-
-Provision and manage Gateway virtual clusters for multi-tenancy, along with their service accounts and authentication tokens, through the Conduktor Gateway admin REST API.
-
-- **Human URL:** [https://docs.conduktor.io/gateway/how-to/multi-cluster/](https://docs.conduktor.io/gateway/how-to/multi-cluster/)
-- **Base URL:** `https://{gateway-admin-host}:8888/gateway/v2`
-
-#### Tags
-
-- Gateway
-- Virtual Clusters
-- Multi-Tenancy
-
-#### Properties
-
-- [Documentation](https://docs.conduktor.io/gateway/how-to/multi-cluster/)
-- [API Reference](https://developers.conduktor.io/?product=gateway)
-- [OpenAPI](openapi/conduktor-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/conduktor.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/conduktor.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/conduktor)
-- [LinkedIn](https://www.linkedin.com/company/conduktor)
 - [Website](https://www.conduktor.io)
 - [Documentation](https://docs.conduktor.io)
-- [Plans](plans/conduktor-plans-pricing.yml)
-- [Rate Limits](rate-limits/conduktor-rate-limits.yml)
-- [Fin Ops](finops/conduktor-finops.yml)
+- [Blog](https://www.conduktor.io/blog/feed.xml)
+- [GitHub](https://github.com/conduktor)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 30.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 41.1 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 15.8 |
+
+**Agent readiness 22.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | platform (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 22.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/conduktor/](https://apis.io/providers/conduktor/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Conduktor: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/conduktor/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
